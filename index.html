@@ -3,75 +3,64 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>En Mantenimiento</title>
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
-      color: #fff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
+      box-sizing: border-box;
     }
-
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(-45deg, #1f1c2c, #928dab, #1f1c2c, #928dab);
+      background-size: 400% 400%;
+      animation: gradient 10s ease infinite;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
     h1 {
       font-size: 3em;
-      animation: fadeIn 2s ease-out;
+      animation: fadeInDown 1s ease-out;
     }
-
     p {
-      font-size: 1.5em;
-      margin-top: 1em;
-      animation: slideIn 2s ease-out;
-    }
-
-    .attribution {
-      margin-top: 2em;
+      margin-top: 20px;
       font-size: 1.2em;
-      font-weight: bold;
-      animation: fadeIn 3s ease-in;
-      color: #00f0ff;
+      animation: fadeInUp 1s ease-out;
     }
-
-    .subscribe {
-      margin-top: 1.5em;
-      padding: 10px 20px;
-      background-color: #ff0055;
-      border: none;
-      color: white;
-      font-size: 1.2em;
-      border-radius: 8px;
-      cursor: pointer;
-      animation: pulse 2s infinite;
-      text-decoration: none;
+    .gear {
+      font-size: 60px;
+      margin: 30px 0;
+      animation: spin 4s linear infinite;
     }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
-
-    @keyframes slideIn {
-      from {transform: translateY(30px); opacity: 0;}
-      to {transform: translateY(0); opacity: 1;}
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
-    @keyframes pulse {
-      0%, 100% {transform: scale(1);}
-      50% {transform: scale(1.1);}
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <h1>🚧 Página en Mantenimiento 🚧</h1>
-  <p>Estamos trabajando para mejorar tu experiencia.</p>
-  <div class="attribution">ATT: BRUSMODS</div>
-  <a class="subscribe" href="https://www.youtube.com/@JORGEDIAZPRO" target="_blank">SUSCRÍBETE</a>
+  <div class="gear">⚙️</div>
+  <h1>Estamos en mantenimiento</h1>
+  <p>Volveremos muy pronto con algo increíble...</p>
 </body>
 </html>
