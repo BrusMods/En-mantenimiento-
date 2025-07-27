@@ -2,83 +2,65 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Página en mantenimiento</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>En Mantenimiento</title>
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
-      background: #1e1e1e;
-      color: white;
-      font-family: 'Arial', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(-45deg, #1f1c2c, #928dab, #1f1c2c, #928dab);
+      background-size: 400% 400%;
+      animation: gradient 10s ease infinite;
       height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-direction: column;
-    }
-
-    .muñeco {
-      width: 150px;
-      height: 150px;
-      background: #f4c542;
-      border-radius: 50%;
-      position: relative;
-      animation: mover 2s infinite alternate;
-    }
-
-    .muñeco::before {
-      content: '';
-      position: absolute;
-      top: 50px;
-      left: -20px;
-      width: 30px;
-      height: 10px;
-      background: #999;
-      border-radius: 5px;
-      transform: rotate(45deg);
-      animation: girarLlave 1s infinite linear;
-    }
-
-    .ojo {
-      position: absolute;
-      width: 15px;
-      height: 15px;
-      background: black;
-      border-radius: 50%;
-      top: 45px;
-    }
-
-    .ojo.izq {
-      left: 40px;
-    }
-
-    .ojo.der {
-      right: 40px;
-    }
-
-    @keyframes mover {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-10px); }
-    }
-
-    @keyframes girarLlave {
-      0% { transform: rotate(45deg); }
-      100% { transform: rotate(405deg); }
-    }
-
-    h1 {
-      margin-top: 30px;
-      font-size: 2em;
+      color: white;
       text-align: center;
+      padding: 20px;
+    }
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    h1 {
+      font-size: 3em;
+      animation: fadeInDown 1s ease-out;
+    }
+    p {
+      margin-top: 20px;
+      font-size: 1.2em;
+      animation: fadeInUp 1s ease-out;
+    }
+    .gear {
+      font-size: 60px;
+      margin: 30px 0;
+      animation: spin 4s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="muñeco">
-    <div class="ojo izq"></div>
-    <div class="ojo der"></div>
-  </div>
+  <div class="gear">⚙️</div>
   <h1>Estamos en mantenimiento</h1>
+  <p>Volveremos muy pronto con algo increíble...</p>
 </body>
 </html>
