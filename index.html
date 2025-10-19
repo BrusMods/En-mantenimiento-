@@ -1,66 +1,152 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>En Mantenimiento</title>
+  <title>🚧 En Mantenimiento | JORGE DÍAZ PRO 🚀</title>
+
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(-45deg, #1f1c2c, #928dab, #1f1c2c, #928dab);
-      background-size: 400% 400%;
-      animation: gradient 10s ease infinite;
+      background: radial-gradient(circle at top, #0a0a0a, #000);
+      color: #fff;
       height: 100vh;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      color: white;
+      position: relative;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .container {
       text-align: center;
-      padding: 20px;
+      z-index: 2;
+      animation: fadeIn 2s ease;
     }
-    @keyframes gradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+
     h1 {
       font-size: 3em;
-      animation: fadeInDown 1s ease-out;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #00ffff;
+      text-shadow: 0 0 10px #00ffff, 0 0 30px #00ffff;
+      animation: pulse 2s infinite;
     }
+
     p {
-      margin-top: 20px;
       font-size: 1.2em;
-      animation: fadeInUp 1s ease-out;
+      color: #ccc;
+      margin-top: 10px;
+      animation: fadeUp 3s ease;
     }
-    .gear {
-      font-size: 60px;
-      margin: 30px 0;
-      animation: spin 4s linear infinite;
+
+    .loader {
+      margin: 40px auto;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 6px solid #222;
+      border-top: 6px solid #00ffff;
+      animation: spin 1.5s linear infinite;
     }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #666;
+      letter-spacing: 1px;
+    }
+
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      to { transform: rotate(360deg); }
     }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    @keyframes pulse {
+      0%, 100% { text-shadow: 0 0 20px #00ffff; }
+      50% { text-shadow: 0 0 40px #00ffff; }
     }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
   </style>
 </head>
+
 <body>
-  <div class="gear">⚙️</div>
-  <h1>BRUSMODS Estamos en mantenimiento</h1>
-  <p>Porfavor tenga un poco de paciencia, ya volvemos...</p>
+  <canvas id="particles"></canvas>
+
+  <div class="container">
+    <h1>🚧 En Mantenimiento 🚧</h1>
+    <div class="loader"></div>
+    <p>Estamos mejorando el sitio para ti...<br>Vuelve pronto 🔧</p>
+    <div class="footer">© 2025 JORGE DÍAZ PRO</div>
+  </div>
+
+  <script>
+    // Fondo animado con partículas
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 1,
+        dx: (Math.random() - 0.5) * 1.5,
+        dy: (Math.random() - 0.5) * 1.5
+      });
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#00ffff";
+
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      });
+
+      requestAnimationFrame(animateParticles);
+    }
+
+    animateParticles();
+  </script>
 </body>
 </html>
