@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> En Mantenimiento | BRUSMODS 🚀</title>
+  <title>🚧 En Mantenimiento | BRUSMODS 🚀</title>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
@@ -44,8 +44,30 @@
       font-weight: 800;
       text-transform: uppercase;
       color: #00ffff;
-      text-shadow: 0 0 10px #00ffff, 0 0 30px #00ffff;
-      animation: pulse 2s infinite;
+      position: relative;
+      animation: pulse 2s infinite, glitch 1s infinite;
+    }
+
+    h1::before,
+    h1::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      width: 100%;
+      color: #00ffff;
+      background: transparent;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+    }
+
+    h1::before {
+      animation: glitchTop 1s infinite linear alternate-reverse;
+      color: #ff00ff;
+    }
+
+    h1::after {
+      animation: glitchBottom 1s infinite linear alternate-reverse;
+      color: #00ff88;
     }
 
     p {
@@ -63,6 +85,58 @@
       border: 6px solid #222;
       border-top: 6px solid #00ffff;
       animation: spin 1.5s linear infinite;
+    }
+
+    .energy {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 250px;
+      height: 250px;
+      margin-left: -125px;
+      margin-top: -125px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,255,255,0.2), transparent 70%);
+      box-shadow: 0 0 60px 15px #00ffff44;
+      filter: blur(30px);
+      animation: energyPulse 4s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .btn-neon {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 28px;
+      font-size: 1.1em;
+      font-weight: 600;
+      color: #00ffff;
+      text-decoration: none;
+      border: 2px solid #00ffff;
+      border-radius: 40px;
+      position: relative;
+      overflow: hidden;
+      transition: 0.3s;
+      z-index: 2;
+    }
+
+    .btn-neon::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, #00ffff, transparent);
+      transition: 0.5s;
+    }
+
+    .btn-neon:hover::before {
+      left: 100%;
+    }
+
+    .btn-neon:hover {
+      color: #fff;
+      box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
     }
 
     .footer {
@@ -90,16 +164,35 @@
       from { transform: translateY(20px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
+
+    @keyframes glitchTop {
+      0% { clip: rect(0, 9999px, 0, 0); transform: translate(-2px, -2px); }
+      50% { clip: rect(0, 9999px, 10px, 0); transform: translate(2px, 2px); }
+      100% { clip: rect(0, 9999px, 5px, 0); transform: translate(0, 0); }
+    }
+
+    @keyframes glitchBottom {
+      0% { clip: rect(90px, 9999px, 100px, 0); transform: translate(2px, 0); }
+      50% { clip: rect(85px, 9999px, 95px, 0); transform: translate(-2px, 2px); }
+      100% { clip: rect(80px, 9999px, 90px, 0); transform: translate(0, 0); }
+    }
+
+    @keyframes energyPulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.3); opacity: 1; }
+    }
   </style>
 </head>
 
 <body>
   <canvas id="particles"></canvas>
+  <div class="energy"></div>
 
   <div class="container">
-    <h1> En Mantenimiento </h1>
+    <h1 data-text="EN MANTENIMIENTO">EN MANTENIMIENTO</h1>
     <div class="loader"></div>
     <p>Estamos mejorando el sitio para ti...<br>Vuelve pronto 🔧</p>
+    <a href="#" class="btn-neon">Volver al Inicio</a>
     <div class="footer">© 2025 BRUSMODS</div>
   </div>
 
