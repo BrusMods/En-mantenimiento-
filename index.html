@@ -6,7 +6,7 @@
   <title>🚧 En Mantenimiento | BRUSMODS 🚀</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap');
 
     * {
       margin: 0;
@@ -31,23 +31,29 @@
       top: 0;
       left: 0;
       z-index: 0;
-      opacity: 0.8; /* Suaviza un poco las partículas para un efecto más etéreo */
+      opacity: 0.85;
     }
 
     .container {
       text-align: center;
       z-index: 2;
       animation: fadeIn 2.5s ease-in-out;
+      max-width: 90%;
     }
 
     h1 {
-      font-size: 3.5em; /* Aumentado para más impacto */
-      font-weight: 800;
+      font-size: 4.2em;          /* Más grande para impacto */
+      font-weight: 900;
       text-transform: uppercase;
-      color: #0135FF;
+      color: #00aaff;            /* Azul claro brillante para máxima visibilidad */
+      letter-spacing: 4px;
+      text-shadow: 
+        0 0 10px #0135FF,
+        0 0 20px #0135FF,
+        0 0 40px #00aaff,
+        0 0 80px #0088ff;
       position: relative;
-      animation: pulse 2s infinite ease-in-out, glitch 1.2s infinite;
-      letter-spacing: 2px; /* Espaciado para más estilo */
+      animation: pulseGlow 3s infinite alternate, subtleGlitch 4s infinite;
     }
 
     h1::before,
@@ -56,82 +62,88 @@
       position: absolute;
       left: 0;
       width: 100%;
+      top: 0;
       background: transparent;
       overflow: hidden;
-      clip: rect(0, 900px, 0, 0);
+      clip: rect(0, 9999px, 0, 0);
+      pointer-events: none;
     }
 
     h1::before {
-      color: #0088ff;
-      animation: glitchTop 1.2s infinite linear alternate-reverse;
+      color: #40c4ff;
+      animation: glitchTop 2.5s infinite linear alternate-reverse;
     }
 
     h1::after {
-      color: #00aaff;
-      animation: glitchBottom 1.2s infinite linear alternate-reverse;
+      color: #80d8ff;
+      animation: glitchBottom 2.5s infinite linear alternate-reverse;
     }
 
     p {
-      font-size: 1.3em;
-      color: #ddd;
-      margin-top: 15px;
-      animation: fadeUp 3s ease-in-out;
-      line-height: 1.5; /* Mejor legibilidad */
+      font-size: 1.4em;
+      color: #e0f7fa;
+      margin-top: 20px;
+      animation: fadeUp 3.5s ease-in-out;
+      text-shadow: 0 0 8px rgba(1,53,255,0.6);
+      line-height: 1.6;
     }
 
     .loader {
-      margin: 50px auto;
-      width: 120px; /* Más grande para wow */
-      height: 120px;
+      margin: 60px auto;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
-      border: 8px solid #001122; /* Fondo azul oscuro */
-      border-top: 8px solid #0135FF;
-      border-bottom: 8px solid #00aaff; /* Doble color para dinamismo */
-      animation: spin 1.2s linear infinite, glowLoader 2s infinite alternate;
+      border: 10px solid rgba(1,53,255,0.2);
+      border-top: 10px solid #0135FF;
+      border-right: 10px solid #0088ff;
+      animation: spin 1.8s linear infinite, glowPulse 2.5s infinite alternate;
+      box-shadow: 0 0 40px #0135FF, inset 0 0 20px #00aaff;
     }
 
     .energy {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 300px; /* Más grande */
-      height: 300px;
-      margin-left: -150px;
-      margin-top: -150px;
+      width: 400px;
+      height: 400px;
+      margin-left: -200px;
+      margin-top: -200px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(1,53,255,0.35), transparent 60%);
-      box-shadow: 0 0 80px 20px rgba(1,53,255,0.5);
-      filter: blur(40px);
-      animation: energyPulse 3.5s ease-in-out infinite;
+      background: radial-gradient(circle, rgba(1,53,255,0.45), transparent 55%);
+      box-shadow: 0 0 100px 30px rgba(1,53,255,0.6), 0 0 200px 60px rgba(0,170,255,0.3);
+      filter: blur(60px);
+      animation: energyPulse 4s ease-in-out infinite;
       z-index: 1;
+      opacity: 0.9;
     }
 
     .btn-neon {
       display: inline-block;
-      margin-top: 35px;
-      padding: 14px 32px;
-      font-size: 1.2em;
-      font-weight: 600;
-      color: #0135FF;
+      margin-top: 40px;
+      padding: 16px 40px;
+      font-size: 1.3em;
+      font-weight: 700;
+      color: #00aaff;
       text-decoration: none;
-      border: 2px solid #0135FF;
-      border-radius: 50px; /* Más redondeado */
+      border: 3px solid #0135FF;
+      border-radius: 60px;
       position: relative;
       overflow: hidden;
       transition: all 0.4s ease;
       z-index: 2;
-      animation: btnPulse 2s infinite alternate;
+      text-shadow: 0 0 10px #0135FF;
+      box-shadow: 0 0 20px rgba(1,53,255,0.5);
     }
 
     .btn-neon::before {
       content: "";
       position: absolute;
       top: 0;
-      left: -150%;
+      left: -100%;
       width: 200%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, #00aaff, transparent);
-      transition: left 0.6s ease;
+      background: linear-gradient(90deg, transparent, rgba(0,170,255,0.4), transparent);
+      transition: left 0.7s ease;
     }
 
     .btn-neon:hover::before {
@@ -140,17 +152,18 @@
 
     .btn-neon:hover {
       color: #fff;
-      background: rgba(1,53,255,0.2);
-      box-shadow: 0 0 25px #0135FF, 0 0 50px #00aaff, 0 0 75px #0088ff;
-      transform: translateY(-5px); /* Levanta al hover para wow */
+      background: rgba(1,53,255,0.25);
+      box-shadow: 0 0 40px #0135FF, 0 0 80px #00aaff;
+      transform: translateY(-8px) scale(1.05);
     }
 
     .footer {
-      margin-top: 50px;
-      font-size: 1em;
-      color: #aaa;
-      letter-spacing: 1.5px;
-      animation: fadeIn 4s ease;
+      margin-top: 60px;
+      font-size: 1.1em;
+      color: #80d8ff;
+      letter-spacing: 2px;
+      opacity: 0.9;
+      animation: fadeIn 5s ease;
     }
 
     /* Animaciones mejoradas */
@@ -158,54 +171,54 @@
       to { transform: rotate(360deg); }
     }
 
-    @keyframes glowLoader {
-      0% { box-shadow: 0 0 20px #0135FF; }
-      100% { box-shadow: 0 0 60px #00aaff; }
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 30px #0135FF; }
+      100% { box-shadow: 0 0 80px #00aaff, 0 0 120px #0088ff; }
     }
 
-    @keyframes pulse {
-      0%, 100% { text-shadow: 0 0 15px #0135FF, 0 0 30px #0088ff; }
-      50% { text-shadow: 0 0 30px #0135FF, 0 0 60px #00aaff; }
+    @keyframes pulseGlow {
+      0%, 100% { text-shadow: 0 0 20px #0135FF, 0 0 40px #00aaff, 0 0 60px #0088ff; }
+      50%  { text-shadow: 0 0 40px #0135FF, 0 0 80px #00aaff, 0 0 120px #0088ff; }
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    @keyframes fadeUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+    @keyframes subtleGlitch {
+      0%, 100% { transform: translate(0); }
+      10%, 60% { transform: translate(-2px, 2px); }
+      20%, 80% { transform: translate(2px, -2px); }
     }
 
     @keyframes glitchTop {
-      0% { clip: rect(0, 9999px, 0, 0); transform: skew(0.2deg) translate(-3px, -3px); }
-      50% { clip: rect(0, 9999px, 15px, 0); transform: skew(-0.3deg) translate(3px, 3px); }
-      100% { clip: rect(0, 9999px, 8px, 0); transform: skew(0.1deg) translate(0, 0); }
+      0% { clip: rect(0, 9999px, 0, 0); transform: translate(-2px, -2px); }
+      50% { clip: rect(0, 9999px, 20px, 0); transform: translate(2px, 2px); }
+      100% { clip: rect(0, 9999px, 10px, 0); transform: translate(0, 0); }
     }
 
     @keyframes glitchBottom {
-      0% { clip: rect(100px, 9999px, 110px, 0); transform: skew(-0.2deg) translate(3px, 0); }
-      50% { clip: rect(90px, 9999px, 100px, 0); transform: skew(0.3deg) translate(-3px, 3px); }
-      100% { clip: rect(85px, 9999px, 95px, 0); transform: skew(-0.1deg) translate(0, 0); }
+      0% { clip: rect(100px, 9999px, 120px, 0); transform: translate(2px, 0); }
+      50% { clip: rect(90px, 9999px, 110px, 0); transform: translate(-2px, 2px); }
+      100% { clip: rect(80px, 9999px, 100px, 0); transform: translate(0, 0); }
     }
 
     @keyframes energyPulse {
-      0%, 100% { transform: scale(1); opacity: 0.7; filter: blur(40px); }
-      50% { transform: scale(1.4); opacity: 1; filter: blur(60px); }
+      0%, 100% { transform: scale(1); opacity: 0.7; filter: blur(60px); }
+      50%  { transform: scale(1.35); opacity: 1; filter: blur(90px); }
     }
 
-    @keyframes btnPulse {
-      0% { box-shadow: 0 0 10px rgba(1,53,255,0.3); }
-      100% { box-shadow: 0 0 20px rgba(1,53,255,0.6); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.85); }
+      to   { opacity: 1; transform: scale(1); }
     }
 
-    /* Responsivo para móviles */
+    @keyframes fadeUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
     @media (max-width: 768px) {
-      h1 { font-size: 2.5em; }
-      p { font-size: 1.1em; }
-      .loader { width: 100px; height: 100px; }
-      .energy { width: 250px; height: 250px; margin-left: -125px; margin-top: -125px; }
+      h1 { font-size: 3em; letter-spacing: 3px; }
+      p { font-size: 1.2em; }
+      .loader { width: 110px; height: 110px; }
+      .energy { width: 300px; height: 300px; margin-left: -150px; margin-top: -150px; }
     }
   </style>
 </head>
@@ -217,9 +230,9 @@
   <div class="container">
     <h1 data-text="EN MANTENIMIENTO">EN MANTENIMIENTO</h1>
     <div class="loader"></div>
-    <p>Estamos mejorando el sitio para ti...<br>Vuelve pronto 🔧</p>
+    <p>Estamos dándole con todo para traerte lo mejor...<br>Vuelve pronto, parcero 🔧💙</p>
     <a href="https://brusmods.github.io/Mi-p-gina-web/" class="btn-neon">Volver al Inicio</a>
-    <div class="footer">© 2026 BRUSMODS</div> <!-- Actualizado el año como en tu footer anterior -->
+    <div class="footer">© 2026 BRUSMODS OFFICIAL</div>
   </div>
 
   <script>
@@ -235,38 +248,52 @@
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
 
-    // Más partículas para un efecto más denso y wow (aumentado de 80 a 150)
-    for (let i = 0; i < 150; i++) {
+    // Partículas más densas y con trails (efecto wow)
+    for (let i = 0; i < 200; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        r: Math.random() * 3 + 1, // Tamaños variados para profundidad
-        dx: (Math.random() - 0.5) * 2, // Velocidad aumentada para dinamismo
-        dy: (Math.random() - 0.5) * 2,
-        alpha: Math.random() * 0.5 + 0.3 // Opacidad variada
+        r: Math.random() * 4 + 1,
+        dx: (Math.random() - 0.5) * 2.5,
+        dy: (Math.random() - 0.5) * 2.5,
+        alpha: Math.random() * 0.6 + 0.3,
+        trail: [] // Para estela
       });
     }
 
     function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "rgba(1,53,255,0.8)"; // Azul neón para partículas
+      ctx.fillStyle = "rgba(0,0,0,0.08)"; // Trail suave
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach(p => {
+        // Dibujar estela
+        p.trail.push({x: p.x, y: p.y, alpha: p.alpha});
+        if (p.trail.length > 15) p.trail.shift();
+
+        p.trail.forEach((t, i) => {
+          ctx.globalAlpha = t.alpha * (1 - i / 15);
+          ctx.fillStyle = `rgba(1,53,255,${t.alpha * 0.6})`;
+          ctx.beginPath();
+          ctx.arc(t.x, t.y, p.r * (1 - i / 20), 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        // Partícula principal
+        ctx.globalAlpha = p.alpha;
+        ctx.fillStyle = "#00aaff";
         ctx.beginPath();
-        ctx.globalAlpha = p.alpha; // Opacidad dinámica
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fill();
 
         p.x += p.dx;
         p.y += p.dy;
 
-        // Rebote con suavizado
         if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
         if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
 
-        // Añadir un poco de "viento" aleatorio para movimiento orgánico
-        p.dx += (Math.random() - 0.5) * 0.1;
-        p.dy += (Math.random() - 0.5) * 0.1;
+        // Movimiento orgánico
+        p.dx += (Math.random() - 0.5) * 0.15;
+        p.dy += (Math.random() - 0.5) * 0.15;
       });
 
       requestAnimationFrame(animateParticles);
