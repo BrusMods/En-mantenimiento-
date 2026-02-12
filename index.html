@@ -8,12 +8,7 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800;900&display=swap');
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
 
     body {
       background: radial-gradient(circle at top, #0135FF 0%, #001122 70%, #000 100%);
@@ -26,34 +21,27 @@
       position: relative;
     }
 
-    canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
-      opacity: 0.85;
-    }
+    canvas { position: absolute; top:0; left:0; z-index:0; opacity:0.9; }
 
     .container {
       text-align: center;
       z-index: 2;
-      animation: fadeIn 2.5s ease-in-out;
+      animation: fadeIn 2s ease-out;
       max-width: 90%;
     }
 
     h1 {
-      font-size: 4.2em;          /* Más grande para impacto */
+      font-size: 4em;
       font-weight: 900;
       text-transform: uppercase;
-      color: #00aaff;            /* Azul claro brillante para máxima visibilidad */
+      color: #00aaff;
       letter-spacing: 4px;
       text-shadow: 
-        0 0 10px #0135FF,
-        0 0 20px #0135FF,
-        0 0 40px #00aaff,
-        0 0 80px #0088ff;
+        0 0 15px #0135FF,
+        0 0 30px #0135FF,
+        0 0 60px #00aaff;
       position: relative;
-      animation: pulseGlow 3s infinite alternate, subtleGlitch 4s infinite;
+      animation: pulseGlow 4s infinite alternate;
     }
 
     h1::before,
@@ -65,160 +53,89 @@
       top: 0;
       background: transparent;
       overflow: hidden;
-      clip: rect(0, 9999px, 0, 0);
-      pointer-events: none;
+      clip: rect(0,9999px,0,0);
     }
 
-    h1::before {
-      color: #40c4ff;
-      animation: glitchTop 2.5s infinite linear alternate-reverse;
-    }
-
-    h1::after {
-      color: #80d8ff;
-      animation: glitchBottom 2.5s infinite linear alternate-reverse;
-    }
+    h1::before { color: #40c4ff; animation: glitchTop 3s infinite alternate-reverse; }
+    h1::after  { color: #80d8ff; animation: glitchBottom 3s infinite alternate-reverse; }
 
     p {
       font-size: 1.4em;
       color: #e0f7fa;
       margin-top: 20px;
-      animation: fadeUp 3.5s ease-in-out;
-      text-shadow: 0 0 8px rgba(1,53,255,0.6);
-      line-height: 1.6;
+      animation: fadeUp 3s ease-out;
+      text-shadow: 0 0 10px rgba(1,53,255,0.7);
     }
 
     .loader {
-      margin: 60px auto;
-      width: 140px;
-      height: 140px;
+      margin: 50px auto;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
-      border: 10px solid rgba(1,53,255,0.2);
-      border-top: 10px solid #0135FF;
-      border-right: 10px solid #0088ff;
-      animation: spin 1.8s linear infinite, glowPulse 2.5s infinite alternate;
-      box-shadow: 0 0 40px #0135FF, inset 0 0 20px #00aaff;
+      border: 8px solid rgba(1,53,255,0.15);
+      border-top: 8px solid #0135FF;
+      animation: spin 1.5s linear infinite, glowPulse 3s infinite alternate;
+      box-shadow: 0 0 40px rgba(1,53,255,0.6);
     }
 
     .energy {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 400px;
-      height: 400px;
-      margin-left: -200px;
-      margin-top: -200px;
+      inset: 0;
+      margin: auto;
+      width: 320px;
+      height: 320px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(1,53,255,0.45), transparent 55%);
-      box-shadow: 0 0 100px 30px rgba(1,53,255,0.6), 0 0 200px 60px rgba(0,170,255,0.3);
-      filter: blur(60px);
-      animation: energyPulse 4s ease-in-out infinite;
+      background: radial-gradient(circle, rgba(1,53,255,0.4), transparent 60%);
+      box-shadow: 0 0 80px 20px rgba(1,53,255,0.5);
+      filter: blur(50px);
+      animation: energyPulse 5s infinite ease-in-out;
       z-index: 1;
-      opacity: 0.9;
+      opacity: 0.85;
     }
 
     .btn-neon {
       display: inline-block;
-      margin-top: 40px;
-      padding: 16px 40px;
-      font-size: 1.3em;
+      margin-top: 35px;
+      padding: 14px 36px;
+      font-size: 1.25em;
       font-weight: 700;
       color: #00aaff;
       text-decoration: none;
       border: 3px solid #0135FF;
-      border-radius: 60px;
+      border-radius: 50px;
       position: relative;
       overflow: hidden;
       transition: all 0.4s ease;
-      z-index: 2;
-      text-shadow: 0 0 10px #0135FF;
-      box-shadow: 0 0 20px rgba(1,53,255,0.5);
-    }
-
-    .btn-neon::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 200%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0,170,255,0.4), transparent);
-      transition: left 0.7s ease;
-    }
-
-    .btn-neon:hover::before {
-      left: 100%;
+      box-shadow: 0 0 20px rgba(1,53,255,0.6);
     }
 
     .btn-neon:hover {
       color: #fff;
-      background: rgba(1,53,255,0.25);
-      box-shadow: 0 0 40px #0135FF, 0 0 80px #00aaff;
-      transform: translateY(-8px) scale(1.05);
+      background: rgba(1,53,255,0.2);
+      box-shadow: 0 0 40px #0135FF, 0 0 70px #00aaff;
+      transform: translateY(-6px);
     }
 
     .footer {
-      margin-top: 60px;
-      font-size: 1.1em;
+      margin-top: 50px;
+      font-size: 1em;
       color: #80d8ff;
-      letter-spacing: 2px;
       opacity: 0.9;
-      animation: fadeIn 5s ease;
     }
 
-    /* Animaciones mejoradas */
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes glowPulse {
-      0% { box-shadow: 0 0 30px #0135FF; }
-      100% { box-shadow: 0 0 80px #00aaff, 0 0 120px #0088ff; }
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { text-shadow: 0 0 20px #0135FF, 0 0 40px #00aaff, 0 0 60px #0088ff; }
-      50%  { text-shadow: 0 0 40px #0135FF, 0 0 80px #00aaff, 0 0 120px #0088ff; }
-    }
-
-    @keyframes subtleGlitch {
-      0%, 100% { transform: translate(0); }
-      10%, 60% { transform: translate(-2px, 2px); }
-      20%, 80% { transform: translate(2px, -2px); }
-    }
-
-    @keyframes glitchTop {
-      0% { clip: rect(0, 9999px, 0, 0); transform: translate(-2px, -2px); }
-      50% { clip: rect(0, 9999px, 20px, 0); transform: translate(2px, 2px); }
-      100% { clip: rect(0, 9999px, 10px, 0); transform: translate(0, 0); }
-    }
-
-    @keyframes glitchBottom {
-      0% { clip: rect(100px, 9999px, 120px, 0); transform: translate(2px, 0); }
-      50% { clip: rect(90px, 9999px, 110px, 0); transform: translate(-2px, 2px); }
-      100% { clip: rect(80px, 9999px, 100px, 0); transform: translate(0, 0); }
-    }
-
-    @keyframes energyPulse {
-      0%, 100% { transform: scale(1); opacity: 0.7; filter: blur(60px); }
-      50%  { transform: scale(1.35); opacity: 1; filter: blur(90px); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.85); }
-      to   { opacity: 1; transform: scale(1); }
-    }
-
-    @keyframes fadeUp {
-      from { transform: translateY(50px); opacity: 0; }
-      to   { transform: translateY(0); opacity: 1; }
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes glowPulse { 0% { box-shadow: 0 0 30px #0135FF; } 100% { box-shadow: 0 0 70px #00aaff; } }
+    @keyframes pulseGlow { 0%,100% { text-shadow: 0 0 20px #0135FF, 0 0 40px #00aaff; } 50% { text-shadow: 0 0 40px #0135FF, 0 0 80px #00aaff; } }
+    @keyframes glitchTop { 0% { clip: rect(0,9999px,0,0); transform: translate(-1px,-1px); } 50% { clip: rect(0,9999px,15px,0); transform: translate(1px,1px); } 100% { clip: rect(0,9999px,8px,0); transform: translate(0,0); } }
+    @keyframes glitchBottom { 0% { clip: rect(100px,9999px,120px,0); transform: translate(1px,0); } 50% { clip: rect(90px,9999px,110px,0); transform: translate(-1px,1px); } 100% { clip: rect(80px,9999px,100px,0); transform: translate(0,0); } }
+    @keyframes energyPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.25); } }
+    @keyframes fadeIn { from { opacity:0; transform:scale(0.9); } to { opacity:1; transform:scale(1); } }
+    @keyframes fadeUp { from { transform:translateY(40px); opacity:0; } to { transform:translateY(0); opacity:1; } }
 
     @media (max-width: 768px) {
       h1 { font-size: 3em; letter-spacing: 3px; }
-      p { font-size: 1.2em; }
-      .loader { width: 110px; height: 110px; }
-      .energy { width: 300px; height: 300px; margin-left: -150px; margin-top: -150px; }
+      .loader { width:100px; height:100px; }
+      .energy { width:280px; height:280px; }
     }
   </style>
 </head>
@@ -230,7 +147,7 @@
   <div class="container">
     <h1 data-text="EN MANTENIMIENTO">EN MANTENIMIENTO</h1>
     <div class="loader"></div>
-    <p>Estamos dándole con todo para traerte lo mejor...<br>Vuelve pronto, parcero 🔧💙</p>
+    <p>Estamos dándole duro para traerte lo mejor...<br>Vuelve pronto, parcero 🔧💙</p>
     <a href="https://brusmods.github.io/Mi-p-gina-web/" class="btn-neon">Volver al Inicio</a>
     <div class="footer">© 2026 BRUSMODS OFFICIAL</div>
   </div>
@@ -240,66 +157,77 @@
     const ctx = canvas.getContext("2d");
     let particles = [];
 
-    function resizeCanvas() {
+    function resize() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     }
+    window.addEventListener("resize", resize);
+    resize();
 
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
-
-    // Partículas más densas y con trails (efecto wow)
-    for (let i = 0; i < 200; i++) {
+    // Partículas optimizadas: menos cantidad, trails cortos, sin array pesado
+    for (let i = 0; i < 100; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        r: Math.random() * 4 + 1,
-        dx: (Math.random() - 0.5) * 2.5,
-        dy: (Math.random() - 0.5) * 2.5,
-        alpha: Math.random() * 0.6 + 0.3,
-        trail: [] // Para estela
+        r: Math.random() * 3 + 1,
+        dx: (Math.random() - 0.5) * 2,
+        dy: (Math.random() - 0.5) * 2,
+        trailX: [], trailY: [], trailAlpha: [] // Arrays cortos
       });
     }
 
-    function animateParticles() {
-      ctx.fillStyle = "rgba(0,0,0,0.08)"; // Trail suave
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    let lastTime = 0;
+    function animate(time) {
+      if (!lastTime) lastTime = time;
+      const delta = time - lastTime;
+      if (delta > 32) { // \~30 FPS máx para no sobrecargar
+        ctx.fillStyle = "rgba(0,0,0,0.12)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      particles.forEach(p => {
-        // Dibujar estela
-        p.trail.push({x: p.x, y: p.y, alpha: p.alpha});
-        if (p.trail.length > 15) p.trail.shift();
+        particles.forEach(p => {
+          // Trail ligero (máx 8 puntos)
+          p.trailX.push(p.x);
+          p.trailY.push(p.y);
+          p.trailAlpha.push(1);
+          if (p.trailX.length > 8) {
+            p.trailX.shift();
+            p.trailY.shift();
+            p.trailAlpha.shift();
+          }
 
-        p.trail.forEach((t, i) => {
-          ctx.globalAlpha = t.alpha * (1 - i / 15);
-          ctx.fillStyle = `rgba(1,53,255,${t.alpha * 0.6})`;
+          // Dibujar trail
+          for (let i = 0; i < p.trailX.length; i++) {
+            ctx.globalAlpha = p.trailAlpha[i] * (1 - i / 8) * 0.7;
+            ctx.fillStyle = "#00aaff";
+            ctx.beginPath();
+            ctx.arc(p.trailX[i], p.trailY[i], p.r * (1 - i / 10), 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          // Partícula principal
+          ctx.globalAlpha = 0.9;
+          ctx.fillStyle = "#00aaff";
           ctx.beginPath();
-          ctx.arc(t.x, t.y, p.r * (1 - i / 20), 0, Math.PI * 2);
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
           ctx.fill();
+
+          p.x += p.dx;
+          p.y += p.dy;
+
+          if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+
+          // Movimiento suave
+          p.dx += (Math.random() - 0.5) * 0.08;
+          p.dy += (Math.random() - 0.5) * 0.08;
         });
 
-        // Partícula principal
-        ctx.globalAlpha = p.alpha;
-        ctx.fillStyle = "#00aaff";
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fill();
-
-        p.x += p.dx;
-        p.y += p.dy;
-
-        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-
-        // Movimiento orgánico
-        p.dx += (Math.random() - 0.5) * 0.15;
-        p.dy += (Math.random() - 0.5) * 0.15;
-      });
-
-      requestAnimationFrame(animateParticles);
+        lastTime = time;
+      }
+      requestAnimationFrame(animate);
     }
 
-    animateParticles();
+    requestAnimationFrame(animate);
   </script>
 </body>
 </html>
